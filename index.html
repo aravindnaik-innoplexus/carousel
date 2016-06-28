@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us" >
+ 	<head>
+        <meta charset="utf-8">
+ 		<title> Sample JS  Carousel</title>
+    <style>
+        element.style {
+     margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#header {
+    background-color:darkgreen;
+    color:white;
+    text-align:center;
+    padding:4px;
+    position: ; 
+}
+
+.header {
+    height:50px;
+    background:#F0F0F0;
+    border:1px solid #CCC;
+    width:960px;
+    margin:0px auto;
+    position: absolute;
+}
+
+.left{
+    border-right-width: 100%;
+    background-color: white ;
+    text-align: center;
+    line-height: 500px;
+    color: maroon;
+    font-size: 20px;
+    height: 110%;
+    width: 20%;
+    position: absolute;    
+    
+}
+.right{
+    
+    border-right-width: 100%;
+    background-color: white;
+    margin-left: 80%;
+    color: maroon;
+    text-align:center;
+    font-size: 20px;
+    line-height: 500px;
+    text-align: vertical; 
+    height: 110%;
+    width:20%;
+    position: absolute;
+
+}
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+</style>
+
+ 	</head>
+ 	<header>
+			<div id= "header" class="container">
+				<h1 class="lead"> Carousel Testing </h1>
+
+				</div>
+
+
+		</header>
+ 	<body style="margin :0px;max-height: 500px;">
+ 	  <div class="container" style="margin:0px; max-height:70%;">
+  		
+
+ 		 <div id= "trycarousel" class = "Carousel" style="background-color:white;" >
+ 			
+
+             <a class="left carousel-control" href="#trycarousel" role="button" onclick ="prev()">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#trycarousel" role="button" onclick="next()" >
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a> 
+ 			
+           
+ 				<div class="item"  >
+ 					<img src="a.jpg" id="0" alt="active" style=" margin-right:50px; margin-left:160px; margin-top:0px;width:100%; height:100%; margin:auto;" ></img>
+ 				
+ 			
+ 					<img src="b.jpg" id="1" alt="notactive" style="display: none;margin-right:50px; margin-left:160px; margin-top:-90px;width:100%; height:100%; margin:auto;"  ></img>
+ 			
+ 				
+ 					<img src="c.jpg" id="2" alt="notactive" style="display: none;margin-right:50px; margin-left:160px; margin-top:-90px;width:100%;height:100%; margin:auto;" ></img>
+ 			
+ 					<img src="d.jpg" id="3" alt="notactive" style="display: none;margin-right:50px; margin-left:160px; margin-top:-90px;width:100%; height:100%; margin:auto;" ></img>
+ 				</div>
+                
+                   
+              	
+ 		 </div>
+    	
+
+ 	  </div>
+
+      <script>
+      
+        function next(){
+            var info = document.getElementsByClassName('item');
+            var i=0;
+          
+           while(i<=3){
+                var b = i.toString();
+                var k=i+1;
+                k=k.toString();
+                if(document.getElementById(b).alt=="active"){
+                    if(i==3){
+                        i=0;
+                        console.log("updated b and k values :"+b+":"+k);
+                        document.getElementById(b).style.display="none";
+                        document.getElementById(b).alt="notactive";
+                        document.getElementById('0').style.display="block";
+                        document.getElementById('0').alt="active";
+                       
+                        break;
+                    }
+                    else{
+                        console.log("updated b and k values :"+b+":"+k);    
+                        document.getElementById(b).style.display="none";
+                        document.getElementById(b).alt="notactive";
+                        document.getElementById(k).style.display="block";
+                        document.getElementById(k).alt="active";  
+                         
+                        break; 
+                    }
+                }
+                i++;
+            }
+          
+       }
+       
+
+        function prev(n){
+           var info = document.getElementsByClassName('item');
+            var i=3;
+          
+           while(i>=0 ){
+                var b = i.toString();
+                var k=i-1;
+                k=k.toString();
+                if(document.getElementById(b).alt=="active"){
+                    if(i==0){
+                        i=3;
+                        k=i.toString();
+                        console.log("updated b and k values :"+b+":"+k);
+                        document.getElementById(b).style.display="none";
+                        document.getElementById(b).alt="notactive";
+                        document.getElementById(k).style.display="block";
+                        document.getElementById(k).alt="active";
+                       
+                        break;
+                    }
+                    else{
+                        var k=i-1;
+                        k=k.toString();
+
+                        console.log("updated b and k values :"+b+":"+k);    
+                        document.getElementById(b).style.display="none";
+                        document.getElementById(b).alt="notactive";
+                        document.getElementById(k).style.display="block";
+                        document.getElementById(k).alt="active";  
+                         
+                        break; 
+                    }
+                }
+                i--;
+            }
+           
+        }
+
+      
+
+      </script>
+
+
+  <!--<script>
+$(document).ready(function(){
+    // Activate Carousel
+    $("#tryCarousel").carousel("pause");
+
+    // Go to the previous item
+    $("#myBtn").click(function(){
+        $("#tryCarousel").carousel("prev");
+    });
+
+    // Go to the next item
+    $("#myBtn2").click(function(){
+        $("#tryCarousel").carousel("next");
+    });
+
+    // Enable Carousel Indicators
+    $(".item1").click(function(){
+        $("#tryCarousel").carousel(0);
+    });
+    $(".item2").click(function(){
+        $("#tryCarousel").carousel(1);
+    });
+    $(".item3").click(function(){
+        $("#tryCarousel").carousel(2);
+    });
+    $(".item4").click(function(){
+        $("#tryCarousel").carousel(3);
+    });
+    $(".item5").click(function(){
+        $("#tryCarousel").carousel(4);
+    });
+
+    // Enable Carousel Controls
+    $(".left").click(function(){
+        $("#tryCarousel").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#tryCarousel").carousel("next");
+    });
+});
+</script>-->
+	</div>
+ 	</body>
+</html>
